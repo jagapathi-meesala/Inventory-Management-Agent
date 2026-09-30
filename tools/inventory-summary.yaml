@@ -1,0 +1,22 @@
+name: inventory-summary
+description: Summarize stock conditions across supplied inventory records.
+version: 1.0.0
+input_schema:
+  type: object
+  properties:
+    records:
+      type: array
+      items:
+        type: object
+  required: [records]
+output_schema:
+  type: object
+  properties:
+    status: {type: string}
+    record_count: {type: integer}
+    total_on_hand: {type: number}
+    total_recommended_reorder: {type: number}
+implementation:
+  type: script
+  path: ../core/inventory.py
+  runtime: python3

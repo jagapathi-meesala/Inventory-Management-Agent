@@ -1,0 +1,22 @@
+name: inventory-status
+description: Assess a single inventory record using explicit stock thresholds.
+version: 1.0.0
+input_schema:
+  type: object
+  properties:
+    sku: {type: string}
+    on_hand: {type: number, minimum: 0}
+    reorder_point: {type: number, minimum: 0}
+    target_stock: {type: number, minimum: 0}
+  required: [sku, on_hand, reorder_point, target_stock]
+output_schema:
+  type: object
+  properties:
+    status: {type: string}
+    sku: {type: string}
+    inventory_status: {type: string, enum: [OUT_OF_STOCK, REORDER, HEALTHY]}
+    recommended_reorder: {type: number}
+implementation:
+  type: script
+  path: ../core/inventory.py
+  runtime: python3

@@ -1,0 +1,17 @@
+spec_version: "0.1.0"
+name: inventory-management-agent
+version: 0.1.0
+description: A deterministic inventory management agent for stock assessment, reorder planning, reconciliation, and inventory summaries.
+skills:
+  - inventory-analysis
+  - reorder-planning
+  - stock-reconciliation
+tools:
+  - inventory-status
+  - reorder-calculation
+  - stock-reconciliation
+  - inventory-summary
+tags:
+  - inventory
+  - supply-chain
+  - stock-management

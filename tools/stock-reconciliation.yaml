@@ -1,0 +1,19 @@
+name: stock-reconciliation
+description: Reconcile recorded and observed inventory quantities.
+version: 1.0.0
+input_schema:
+  type: object
+  properties:
+    recorded_quantity: {type: number, minimum: 0}
+    observed_quantity: {type: number, minimum: 0}
+  required: [recorded_quantity, observed_quantity]
+output_schema:
+  type: object
+  properties:
+    status: {type: string}
+    variance: {type: number}
+    reconciliation_status: {type: string, enum: [MATCH, MISMATCH]}
+implementation:
+  type: script
+  path: ../core/inventory.py
+  runtime: python3

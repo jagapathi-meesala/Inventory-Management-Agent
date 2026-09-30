@@ -1,0 +1,22 @@
+name: reorder-calculation
+description: Calculate whether stock should be reordered and the recommended quantity.
+version: 1.0.0
+input_schema:
+  type: object
+  properties:
+    sku: {type: string}
+    on_hand: {type: number, minimum: 0}
+    reorder_point: {type: number, minimum: 0}
+    target_stock: {type: number, minimum: 0}
+  required: [sku, on_hand, reorder_point, target_stock]
+output_schema:
+  type: object
+  properties:
+    status: {type: string}
+    sku: {type: string}
+    reorder_required: {type: boolean}
+    recommended_quantity: {type: number}
+implementation:
+  type: script
+  path: ../core/inventory.py
+  runtime: python3
